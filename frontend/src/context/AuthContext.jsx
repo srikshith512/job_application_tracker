@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const login = async (credentials) => {
-    const authData = await apiRequest("/auth/login", {
+    const authData = await apiRequest("login", {
       method: "POST",
       body: JSON.stringify(credentials)
     });
@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (payload) => {
-    const authData = await apiRequest("/auth/register", {
+    const authData = await apiRequest("register", {
       method: "POST",
       body: JSON.stringify(payload)
     });
