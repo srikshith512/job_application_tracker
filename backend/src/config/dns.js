@@ -7,5 +7,6 @@ export const configureDns = () => {
 
   if (dnsServers?.length) {
     dns.setServers(dnsServers);
+    console.log(`Using custom DNS servers: ${dnsServers.join(", ")}`);
   }
 };

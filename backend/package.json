@@ -4,6 +4,9 @@
   "description": "Express and MongoDB API for the Job Application Tracker.",
   "type": "module",
   "main": "src/server.js",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
