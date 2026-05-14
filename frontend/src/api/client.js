@@ -1,4 +1,9 @@
-export const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const normalizeApiUrl = (url) => {
+  const baseUrl = url.replace(/\/+$/, "");
+  return baseUrl.endsWith("/api") ? baseUrl : `${baseUrl}/api`;
+};
+
+export const API_URL = normalizeApiUrl(import.meta.env.VITE_API_URL || "http://localhost:5000");
 export const AUTH_STORAGE_KEY = "job-tracker-auth";
 
 const getToken = () => {
@@ -18,6 +23,7 @@ const getToken = () => {
 
 export const apiRequest = async (path, options = {}) => {
   const token = getToken();
+  const requestPath = path.startsWith("/") ? path : `/${path}`;
   const headers = {
     "Content-Type": "application/json",
     ...options.headers
@@ -27,7 +33,7 @@ export const apiRequest = async (path, options = {}) => {
     headers.Authorization = `Bearer ${token}`;
   }
 
-  const response = await fetch(`${API_URL}${path}`, {
+  const response = await fetch(`${API_URL}${requestPath}`, {
     ...options,
     headers
   });
