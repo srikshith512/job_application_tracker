@@ -174,7 +174,7 @@ const DashboardPage = () => {
       <header className="dashboard-header">
         <div>
           <p>Job Application Tracker</p>
-          <h1>Pipeline dashboard</h1>
+          <h1>Dashboard</h1>
           <span>Signed in as {user?.name}</span>
         </div>
 
